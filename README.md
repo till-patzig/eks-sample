@@ -9,18 +9,18 @@
 
 # ❓ How to use this repo
 ## 🎁 Deployment 
-1. :white_check_mark: edit config file `/src/config/eksSampleConfig.ts` and replace with values from your environment
-1. :white_check_mark: run `yarn` for resolving dependencies
-1. :white_check_mark: run `cdk deploy --all` for deploying the cloudformation stacks
+1. edit config file `/src/config/eksSampleConfig.ts` and replace with values from your environment
+1. run `yarn` for resolving dependencies
+1. run `cdk deploy --all` for deploying the cloudformation stacks
 
 ## 💻 Use the deployed components
-1. :key: Run `Ec2ClusterConfigCommand`found in cloudformation stack `eks-sample` for updating kubectl-config 
-1. :key: Get Grafana Admin Password `kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d;echo`
-1. :computer: Browse Urls found in output parameters of cloudformation stack `eks-sample`
+1. Run `Ec2ClusterConfigCommand`found in cloudformation stack `eks-sample` for updating kubectl-config 
+1. Get Grafana Admin Password `kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d;echo`
+1. Browse Urls found in output parameters of cloudformation stack `eks-sample`
    - Grafana
    - Kubeview
 
-## 💻 kubectl commands
+## kubectl commands
 |                                  |command                                                                                                               |
 |--                                |--                                                                                                                    |
 |:key:get Grafana Admin password   |`kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" \| base64 -d;echo`             |
