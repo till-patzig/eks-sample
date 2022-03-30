@@ -23,8 +23,8 @@
 ## kubectl commands
 |                                  |command                                                                                                               |
 |--                                |--                                                                                                                    |
-|:key:get Grafana Admin password   |`kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d;echo``             |
-|:key:get Loki configuration       |`kubectl -n grafana get secret loki-stack -o json | jq '.data."loki.yaml"' | tr -d "\"" | base64 -d``                 |
+|:key:get Grafana Admin password   |`kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" \| base64 -d;echo`             |
+|:key:get Loki configuration       |`kubectl -n grafana get secret loki-stack -o json \| jq '.data."loki.yaml"' \| tr -d "\"" \| base64 -d`               |
 |:newspaper:get all services in Grafana space |`kubectl -n grafana get services`                                                                          |
 |:newspaper:get all pods in Grafana space     |`kubectl -n grafana get pods`                                                                              |
 |:newspaper:get loki logs                     |`kubectl -n grafana logs loki-stack-0`                                                                     |
