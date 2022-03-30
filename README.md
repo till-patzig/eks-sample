@@ -38,7 +38,7 @@
 |:wrench:configmap prometheus-alertmanager |`kubectl -n grafana describe configmaps loki-stack-prometheus-alertmanager`                                   |
 |:wrench:configmap prometheus-server|`kubectl -n grafana describe configmaps loki-stack-prometheus-server`                                                |
 |:wrench:configmap promtail        |`kubectl -n grafana describe configmaps loki-stack-promtail`                                                          |
-|:zap:connecto to bash from pod. example|`kubectl -n grafana exec -it loki-stack-prometheus-server-57f5459f7c-h7fvb -- sh`                                |
+|:zap:connect to bash from pod     |`kubectl -n grafana exec -it loki-stack-prometheus-server-57f5459f7c-h7fvb -- sh`                                     |
 |:newspaper:get prometheus-server logs|`kubectl -n grafana logs loki-stack-prometheus-server-57f5459f7c-h7fvb prometheus-server`                          |
 
 # references
