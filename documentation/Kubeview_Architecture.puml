@@ -1,0 +1,23 @@
+@startuml Architecture of Kubeview service
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v11.1/dist
+!includeurl AWSPuml/AWSCommon.puml
+!includeurl AWSPuml/NetworkingContentDelivery/ElasticLoadBalancingApplicationLoadBalancer.puml
+!includeurl AWSPuml/NetworkingContentDelivery/Route53.puml
+!includeurl AWSPuml/Compute/EC2.puml
+!includeurl AWSPuml/SecurityIdentityCompliance/CertificateManager.puml
+!includeurl AWSPuml/Containers/ElasticKubernetesService.puml
+
+agent "Website https://kubeview.till-patzig.io" as website_kubeview #fff
+Route53(r53_kubeview,"A-Record", "kubeview.till-patzig.io")
+website_kubeview <--> r53_kubeview : (1) dns lookup
+ElasticLoadBalancingApplicationLoadBalancer(alb_kubeview, "Kubeview ALB", "created by <ALB controller>")
+CertificateManager(TLS_certificate, "wildcard certificate", "*.till-patzig.io")
+alb_kubeview --> TLS_certificate : use certificate for TLS termination
+website_kubeview <--> alb_kubeview : (2) HTTPS get
+EC2(targetgroup, "Target Group", "containing IP targets")
+alb_kubeview <--> targetgroup : (3) HTTP get
+ElasticKubernetesService(kubeview_service, "Kubeview Service", "private ip endpoint")
+targetgroup <--> kubeview_service : (4) HTTP get
+
+@enduml
