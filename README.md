@@ -1,4 +1,4 @@
-# Open tasks
+# 📰 Open tasks
 - [ ] **implement least privilege in all policies**
 - [ ] implement job for patching the ec2 worker nodes 
 - [ ] create backup job for EFS file system
@@ -7,20 +7,20 @@
   - [ ] add sample implementation for nginx ingress (replacement for ALB controller)
 - [ ] add cdk infrastructure tests
 
-# How to use this repo
-## Deployment
-1. edit config file `/src/config/eksSampleConfig.ts` and replace with values from your environment
-1. run `yarn` for resolving dependencies
-1. run `cdk deploy --all` for deploying the cloudformation stacks
+# ❓ How to use this repo
+## 🎁 Deployment 
+1. :white_check_mark: edit config file `/src/config/eksSampleConfig.ts` and replace with values from your environment
+1. :white_check_mark: run `yarn` for resolving dependencies
+1. :white_check_mark: run `cdk deploy --all` for deploying the cloudformation stacks
 
-## Use the deployed components
-1. Run `Ec2ClusterConfigCommand`found in cloudformation stack `eks-sample` for updating kubectl-config 
-1. Get Grafana Admin Password `kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d;echo`
-1. Browse Urls found in output parameters of cloudformation stack `eks-sample`
+## 💻 Use the deployed components
+1. :key: Run `Ec2ClusterConfigCommand`found in cloudformation stack `eks-sample` for updating kubectl-config 
+1. :key: Get Grafana Admin Password `kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d;echo`
+1. :computer: Browse Urls found in output parameters of cloudformation stack `eks-sample`
    - Grafana
    - Kubeview
 
-## kubectl commands
+## 💻 kubectl commands
 |                                  |command                                                                                                               |
 |--                                |--                                                                                                                    |
 |:key:get Grafana Admin password   |`kubectl -n grafana get secret loki-stack-grafana -o jsonpath="{.data.admin-password}" \| base64 -d;echo`             |
@@ -41,7 +41,7 @@
 |:zap:connect to bash from pod     |`kubectl -n grafana exec -it loki-stack-prometheus-server-57f5459f7c-h7fvb -- sh`                                     |
 |:x: delete all from namespace     |`kubectl delete ns grafana`                                                                                           |
 
-# references
+# 👇 references
 Beside the official [EKS user guide](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html) and [cdk reference](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) I learned a lot from:
 - [super-eks](https://github.com/superluminar-io/super-eks) :+1:
 - [thecdkbook](https://www.thecdkbook.com/) :+1:
